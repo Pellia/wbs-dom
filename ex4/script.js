@@ -1,24 +1,21 @@
 // Get Main Elements
 const btn = document.querySelector("button");
 const output = document.getElementById("output");
-const inputName = document.getElementById("name");
-const inputEmail = document.getElementById("email");
-const inputMessage = document.getElementById("message");
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const message = document.getElementById("message");
+const inputArr = [name, email, message];
 
 // Butten Event
 btn.addEventListener("click", (event) => {
     event.preventDefault();
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-    const inputArr = [name, email, message];
     const inputList = document.createElement("ul");
 
     // Check for Input Data
-    if (name !== "" && email !== "" && message !== "") {
+    if (name.value !== "" && email.value !== "" && message.value !== "") {
         inputArr.forEach((input) => {
             const item = document.createElement("li");
-            item.textContent = input;
+            item.textContent = input.value;
             item.classList.add("p-4", "mb-4", "text-md", "font-bold", "text-green-800", "rounded-lg", "bg-green-50");
             inputList.appendChild(item);
         });
@@ -32,7 +29,7 @@ btn.addEventListener("click", (event) => {
     }
 
     // Clear Input Fields
-    inputName.value = "";
-    inputEmail.value = "";
-    inputMessage.value = "";
+    name.value = "";
+    email.value = "";
+    message.value = "";
 });
