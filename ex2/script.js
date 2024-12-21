@@ -33,8 +33,10 @@ navList.style.listStyle = "None";
 const navArr = ["Home", "Menu", "About", "Contact"];
 navArr.forEach((item) => {
     const listItem = document.createElement("li");
+    const aItem = document.createElement("a");
     listItem.className = "nav-item";
-    listItem.textContent = item;
+    aItem.textContent = item;
+    listItem.appendChild(aItem);
     navList.appendChild(listItem);
     listItem.style.marginLeft = "1.5rem";
     listItem.style.textDecoration = "none";

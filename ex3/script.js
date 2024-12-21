@@ -13,7 +13,7 @@ const tasks = [
 ];
 
 function getRandomTask() {
-    return tasks[Math.floor(Math.random(tasks) * tasks.length)];
+    return tasks[Math.floor(Math.random() * tasks.length)];
 }
 
 // Add Item - Button
