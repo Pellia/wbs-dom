@@ -24,10 +24,10 @@ logo.style.color = "#333";
 logo.style.textDecoration = "None";
 
 // nav-list
-const unorderedList = document.createElement("ul");
-unorderedList.className = "nav-list";
-unorderedList.style.display = "flex";
-unorderedList.style.listStyle = "None";
+const navList = document.createElement("ul");
+navList.className = "nav-list";
+navList.style.display = "flex";
+navList.style.listStyle = "None";
 
 // nav-item
 const navArr = ["Home", "Menu", "About", "Contact"];
@@ -35,7 +35,7 @@ navArr.forEach((item) => {
     const listItem = document.createElement("li");
     listItem.className = "nav-item";
     listItem.textContent = item;
-    unorderedList.appendChild(listItem);
+    navList.appendChild(listItem);
     listItem.style.marginLeft = "1.5rem";
     listItem.style.textDecoration = "none";
     listItem.style.color = "#333";
@@ -46,7 +46,7 @@ navArr.forEach((item) => {
 document.body.appendChild(header);
 header.appendChild(nav);
 nav.appendChild(logo);
-nav.appendChild(unorderedList);
+nav.appendChild(navList);
 
 // ----- HERO -----
 // hero
@@ -70,12 +70,14 @@ heroContent.style.textAlign = "center";
 // h1
 const h1Hero = document.createElement("h1");
 h1Hero.textContent = "Welcome to Our Coffe Shop";
-h1Hero.style.fontSize = "1.2rem";
-h1Hero.style.marginBottom = "2rem";
+h1Hero.style.fontSize = "2.5rem";
+h1Hero.style.marginBottom = "1rem";
 
 // p
 const paraHero = document.createElement("p");
 paraHero.textContent = "Enjoy the best coffee in town.";
+paraHero.style.fontSize = "1.2rem";
+paraHero.style.marginBottom = "2rem";
 
 // a
 const aHero = document.createElement("a");
@@ -87,6 +89,7 @@ aHero.style.padding = "0.75rem 1.5rem";
 aHero.style.textDecoration = "none";
 aHero.style.borderRadius = "5px";
 aHero.style.transition = "background-color 0.3s ease";
+
 aHero.addEventListener("mouseover", () => {
     aHero.style.backgroundColor = "#555";
 });
