@@ -9,10 +9,12 @@ const inputArr = [name, email, message];
 // Butten Event
 btn.addEventListener("click", (event) => {
     event.preventDefault();
+
+    // Create <ul> Element
     const inputList = document.createElement("ul");
 
-    // Check for Input Data
-    if (name.value !== "" && email.value !== "" && message.value !== "") {
+    // Add input Data
+    if (name.value && email.value && message.value) {
         inputArr.forEach((input) => {
             const item = document.createElement("li");
             item.textContent = input.value;
