@@ -1,60 +1,51 @@
-// Elements
+// DOM Elements
 const userScore = document.getElementById("user-score");
 const computerScore = document.getElementById("computer-score");
 const rockBtn = document.getElementById("rock");
 const paperBtn = document.getElementById("paper");
-const scissorBtn = document.getElementById("scissors");
+const scissorsBtn = document.getElementById("scissors");
 const result = document.getElementById("result");
 const playBtn = document.getElementById("play-button");
 let userMove = null;
 
 // Functions
+function pickMove(self, targetOne, targetTwo, move) {
+    self.classList.add("border-2", "border-black");
+    targetOne.classList.remove("border-2", "border-black");
+    targetTwo.classList.remove("border-2", "border-black");
+    userMove = move;
+}
+
 function getComputerMove() {
-    const move = ["Rock", "Paper", "Scissor"];
+    const move = ["Rock", "Paper", "Scissors"];
     return move[Math.floor(Math.random() * 3)];
 }
 
 function compareMoves(userMove, computerMove) {
-    if (userMove === computerMove) {
-        result.textContent = "It's a tie!";
-    } else if (userMove === "Rock" && computerMove === "Scissor") {
-        result.textContent = "You win!";
+    if ((userMove === "Rock" && computerMove === "Scissors") || (userMove === "Paper" && computerMove === "Rock") || (userMove === "Scissors" && computerMove === "Paper")) {
+        result.textContent = `Player: ${userMove} >>> You win! <<< Computer: ${computerMove}`;
         userScore.textContent++;
-    } else if (userMove === "Paper" && computerMove === "Rock") {
-        result.textContent = "You win!";
-        userScore.textContent++;
-    } else if (userMove === "Scissor" && computerMove === "Paper") {
-        result.textContent = "You win!";
-        userScore.textContent++;
+    } else if (userMove === computerMove) {
+        result.textContent = `Player: ${userMove} >>> Its a tie! <<< Computer: ${computerMove}`;
     } else {
-        result.textContent = "Computer wins!";
+        result.textContent = `Player: ${userMove} >>> Computer wins! <<< Computer: ${computerMove}`;
         computerScore.textContent++;
     }
 }
 
-rockBtn.addEventListener("click", () => {
-    rockBtn.classList.add("border-2", "border-black");
-    paperBtn.classList.remove("border-2", "border-black");
-    scissorBtn.classList.remove("border-2", "border-black");
-    userMove = "Rock";
-});
+function play(userMove) {
+    if (userMove !== null) {
+        const computerMove = getComputerMove();
+        compareMoves(userMove, computerMove);
+    } else {
+        alert("Please pick a move!");
+    }
+}
 
-paperBtn.addEventListener("click", () => {
-    rockBtn.classList.remove("border-2", "border-black");
-    paperBtn.classList.add("border-2", "border-black");
-    scissorBtn.classList.remove("border-2", "border-black");
-    userMove = "Paper";
-});
+// Pick Move
+rockBtn.addEventListener("click", () => pickMove(rockBtn, paperBtn, scissorsBtn, "Rock"));
+paperBtn.addEventListener("click", () => pickMove(paperBtn, rockBtn, scissorsBtn, "Paper"));
+scissorsBtn.addEventListener("click", () => pickMove(scissorsBtn, rockBtn, paperBtn, "Scissors"));
 
-scissorBtn.addEventListener("click", () => {
-    rockBtn.classList.remove("border-2", "border-black");
-    paperBtn.classList.remove("border-2", "border-black");
-    scissorBtn.classList.add("border-2", "border-black");
-    userMove = "Scissor";
-});
-
-playBtn.addEventListener("click", () => {
-    const computerMove = getComputerMove();
-    compareMoves(userMove, computerMove);
-    // console.log();
-});
+// Play
+playBtn.addEventListener("click", () => play(userMove));
