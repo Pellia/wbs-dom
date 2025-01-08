@@ -23,12 +23,12 @@ function getComputerMove() {
 
 function compareMoves(userMove, computerMove) {
     if ((userMove === "Rock" && computerMove === "Scissors") || (userMove === "Paper" && computerMove === "Rock") || (userMove === "Scissors" && computerMove === "Paper")) {
-        result.textContent = `Player: ${userMove} >>> You win! <<< Computer: ${computerMove}`;
+        result.textContent = `Player: ${userMove} vs. Comp: ${computerMove} >>> You win!`;
         userScore.textContent++;
     } else if (userMove === computerMove) {
-        result.textContent = `Player: ${userMove} >>> Its a tie! <<< Computer: ${computerMove}`;
+        result.textContent = `Player: ${userMove} vs. Comp: ${computerMove} >>> Its a tie!`;
     } else {
-        result.textContent = `Player: ${userMove} >>> Computer wins! <<< Computer: ${computerMove}`;
+        result.textContent = `Player: ${userMove} vs. Comp: ${computerMove} >>> Computer wins!`;
         computerScore.textContent++;
     }
 }
